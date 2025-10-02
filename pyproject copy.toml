@@ -4,7 +4,7 @@
 [project]
 # 项目基本信息
 name = "mcp-datatools"
-version = "0.2.0"
+version = "2.0.0"
 description = "A MCP server that connects to multiple databases"
 requires-python = ">=3.10"  # 最低Python版本要求
 
@@ -55,3 +55,4 @@ target-version = ['py310']            # 目标Python版本
 [tool.isort]
 profile = "black"                     # 使用black兼容的配置
 multi_line_output = 3                 # 多行导入的格式
+

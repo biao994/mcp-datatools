@@ -1,14 +1,57 @@
-[project]
-name = "mcp-datatools"
-version = "0.1.0"
-description = "A MCP server that connects to your database"
-requires-python = ">=3.10"
+# MCP DataTools 项目配置文件
+# 这是一个支持多数据库连接的MCP服务器项目
 
+[project]
+# 项目基本信息
+name = "mcp-datatools"
+version = "0.2.0"
+description = "A MCP server that connects to multiple databases"
+requires-python = ">=3.10"  # 最低Python版本要求
+
+# 核心依赖包
 dependencies = [
-    "mcp>=1.0.0",
-    "sqlalchemy>=2.0.0",
+    "mcp>=1.0.0",                    # MCP协议核心库
+    "sqlalchemy>=2.0.0",             # SQLAlchemy ORM，支持多种数据库
+    "psycopg2-binary>=2.9.0",        # PostgreSQL数据库驱动
+    "pymysql>=1.1.0",                # MySQL数据库驱动
+    "cryptography>=41.0.0",          # 加密支持，用于安全连接
+    "python-dotenv>=1.0.0",          # 环境变量管理
+    "pydantic>=2.0.0",               # 数据验证和序列化
+    "pydantic-settings>=2.10.1",     # 配置管理扩展
 ]
 
+# 可选依赖包（开发环境）
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",                 # 测试框架
+    "pytest-asyncio>=0.21.0",        # 异步测试支持
+    "black>=23.0.0",                 # 代码格式化工具
+    "isort>=5.12.0",                 # 导入排序工具
+]
+
+# 构建系统配置
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling"]              # 使用hatchling作为构建后端
 build-backend = "hatchling.build"
+
+# 打包配置
+[tool.hatch.build.targets.wheel]
+packages = ["src/mcp_datatools"]      # 指定要打包的源码目录
+
+# 命令行脚本配置
+[project.scripts]
+mcp-datatools = "mcp_datatools.server:main"  # 定义命令行入口点
+
+# 测试配置
+[tool.pytest.ini_options]
+pythonpath = ["src"]                  # 添加src目录到Python路径
+
+# 代码格式化配置
+[tool.black]
+line-length = 88                      # 每行最大字符数
+target-version = ['py310']            # 目标Python版本
+
+# 导入排序配置
+[tool.isort]
+profile = "black"                     # 使用black兼容的配置
+multi_line_output = 3                 # 多行导入的格式

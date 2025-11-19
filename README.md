@@ -136,9 +136,12 @@ uv run python -m mcp_datatools.server
 问AI：查询价格大于1000的产品
 ```
 <img width="976" height="540" alt="image" src="https://github.com/user-attachments/assets/57771453-6aec-4003-a96c-54673680d032" />
+
 ```
 问AI：查询每个用户的订单数量
 ```
+<img width="707" height="706" alt="image" src="https://github.com/user-attachments/assets/5bc02e42-f847-407f-af94-5b011062ad4c" />
+
 
 ### 5. 获取数据库信息
 ```
@@ -253,4 +256,5 @@ uv run python -m mcp_datatools.server
 ---
 
 ⭐ 如果这个项目对你有帮助，请给个 Star 支持一下！
+
 
